@@ -1,12 +1,8 @@
-﻿using System;
-using System.Drawing;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Exercise_1;
+﻿namespace CSLT_hungdoan30_exercise_1.session2;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main1(string[] args)
     {
         // 1. to Add / Sum Two Numbers.
 
@@ -54,14 +50,14 @@ class Program
 
         Console.Write("Enter Celsius degree: ");
         double celsius = double.Parse(Console.ReadLine());
-        double fahrenheit = (celsius * 9/5) + 32;
+        double fahrenheit = (celsius * 9 / 5) + 32;
         Console.WriteLine($"The temperature in Fahrenheit is: {fahrenheit}");
 
         // vice versa
 
         Console.Write("Enter Fahrenheit degree: ");
         double fahrenheitdegree = double.Parse(Console.ReadLine());
-        double celsiusdegree = (fahrenheitdegree - 32) * 5/9;
+        double celsiusdegree = (fahrenheitdegree - 32) * 5 / 9;
         Console.WriteLine($"The temperature in Celsius is: {celsiusdegree}");
 
         // 6.to find the Size of data types
