@@ -7,7 +7,7 @@ namespace CSLT_hungdoan30_exercise_1.session03
     internal class session3
     {
         // 1. convert celsius to fahrenheit and kelvin
-        public static void Main(string[] args)
+        public static void Main2(string[] args)
         {
             Console.Write("Enter Celsius degree: ");
             double celsius = double.Parse(Console.ReadLine());
