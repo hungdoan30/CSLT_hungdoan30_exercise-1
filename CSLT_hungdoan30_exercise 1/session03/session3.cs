@@ -20,7 +20,7 @@ namespace CSLT_hungdoan30_exercise_1.session03
 
 
 
-            // 2. calculate the surface and volume of a sphere, given its radius
+        // 2. calculate the surface and volume of a sphere, given its radius
 
             Console.Write("Radius: ");
             double r = double.Parse(Console.ReadLine());
@@ -31,8 +31,8 @@ namespace CSLT_hungdoan30_exercise_1.session03
             Console.WriteLine($"volume = {volume}");
 
 
-            // 3. calculates the result of adding, subtracting,
-            // multiplying and dividing two numbers entered by the user
+        // 3. calculates the result of adding, subtracting,
+        // multiplying and dividing two numbers entered by the user
 
             Console.Write("Enter a: ");
             int a = int.Parse(Console.ReadLine());
