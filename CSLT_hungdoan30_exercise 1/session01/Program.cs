@@ -12,7 +12,9 @@ namespace CSLT.DHung
         {
             Console.WriteLine("Hello!");
             Console.WriteLine("My name is Stephen");
-            Console.WriteLine("I love basketball");
+            Console.WriteLine("I love basketball and football");
+            Console.WriteLine("My favourite basketball player is Steph Curry, hence my nickname");
+
         }
     }
 }
