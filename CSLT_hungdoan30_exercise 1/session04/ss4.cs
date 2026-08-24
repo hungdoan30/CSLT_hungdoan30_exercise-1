@@ -6,7 +6,7 @@ namespace CSLT_hungdoan30_exercise_1.session04
 {
     internal class ss4
     {
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             //Bai1();
             //Bai2();
