@@ -38,8 +38,6 @@ namespace CSLT_hungdoan30_exercise_1.session04
                     double x = -c / b;
                     Console.WriteLine($"Nghiệm của phương trình là: x = {x}");
                 }
-
-
             }
             else
             { float delta = b * b - 4 * a * c;
@@ -59,7 +57,6 @@ namespace CSLT_hungdoan30_exercise_1.session04
                     Console.WriteLine($"Phương trình có hai nghiệm phân biệt: x1 = {x1}, x2 = {x2}");
                 }
             }
-
         }
     }
 }
