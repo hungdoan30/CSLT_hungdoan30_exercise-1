@@ -8,7 +8,7 @@ namespace CSLT.DHung
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Console.WriteLine("Hello!");
             Console.WriteLine("My name is Stephen");
