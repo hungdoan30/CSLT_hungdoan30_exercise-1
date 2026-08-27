@@ -246,7 +246,7 @@ namespace CSLT_hungdoan30.session3
             Console.Write("Số tín chỉ Tiếng Anh: "); int tcAnh = int.Parse(Console.ReadLine());
 
             int tongTinChi = tcCS + tcToan + tcAnh;
-            // Điểm trung bình trọng số = tổng(điểm x tín chỉ) / tổng tín chỉ
+            
             double diemTB = (diemCS * tcCS + diemToan * tcToan + diemAnh * tcAnh) / tongTinChi;
 
             string diemChu;
@@ -329,36 +329,44 @@ namespace CSLT_hungdoan30.session3
         }
 
         // BÀI 7: CHI PHÍ NHIÊN LIỆU CHUYẾN ĐI (CAR-POOLING)
-     
+
         static void Bai07_ChiPhiXangDau()
         {
             Console.WriteLine("BÀI 7: CHI PHÍ NHIÊN LIỆU CHUYẾN ĐI ");
-            Console.Write("Quãng đường (km): "); double quangDuong = double.Parse(Console.ReadLine());
-            Console.Write("Mức tiêu hao (Lít/100km): "); double tieuHao = double.Parse(Console.ReadLine());
-            Console.Write("Giá xăng (VNĐ/Lít): "); decimal giaXang = decimal.Parse(Console.ReadLine());
-            Console.Write("Số người tham gia: "); int soNguoi = int.Parse(Console.ReadLine());
 
-            double tongLit = (quangDuong / 100) * tieuHao;
-            // Ép kiểu double -> decimal khi nhân với đơn giá tiền tệ
+            // Nhập dữ liệu
+            Console.Write("Quãng đường (km): ");
+            double quangDuong = double.Parse(Console.ReadLine());
+
+            Console.Write("Mức tiêu hao (Lít/100km): ");
+            double tieuHao = double.Parse(Console.ReadLine());
+
+            Console.Write("Giá xăng (VNĐ/Lít): ");
+            decimal giaXang = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Số người tham gia: ");
+            int soNguoi = int.Parse(Console.ReadLine());
+
+            double tongLit = (quangDuong / 100.0) * tieuHao;
+
             decimal tongChiPhi = (decimal)tongLit * giaXang;
+
             decimal chiPhiMoiNguoi = tongChiPhi / soNguoi;
 
-            // Làm tròn LÊN đến hàng nghìn VNĐ gần nhất
-            chiPhiMoiNguoi = Math.Ceiling(chiPhiMoiNguoi / 1000) * 1000;
+            chiPhiMoiNguoi = Math.Ceiling(chiPhiMoiNguoi / 1000m) * 1000m;
 
             Console.WriteLine($"\nTổng nhiên liệu tiêu thụ: {tongLit:F2} Lít");
             Console.WriteLine($"Tổng chi phí xăng dầu: {tongChiPhi:N0} VNĐ");
             Console.WriteLine($"Chi phí mỗi người: {chiPhiMoiNguoi:N0} VNĐ");
         }
 
-     
+
         // BÀI 8: KIỂM TRA MÃ XÁC THỰC OTP
-    
+
         static void Bai08_KiemTraOTP()
         {
             Console.WriteLine("BÀI 8: KIỂM TRA MÃ OTP");
 
-            // Mô phỏng mã OTP hệ thống đã gửi và thời điểm phát hành
             string maOTPHeThong = "839201";
             DateTime thoiDiemTao = DateTime.Now;
 
