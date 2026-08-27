@@ -6,7 +6,7 @@ namespace CSLT_hungdoan30_exercise_1.session04
 {
     internal class giai_pt_bac_2
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Giải phương trình bậc 2: ax^2 + bx + c = 0");
