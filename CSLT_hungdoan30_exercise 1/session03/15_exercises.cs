@@ -5,25 +5,18 @@ using System.Text;
 
 namespace CSLT_hungdoan30.session3
 {
-    // ---------- CÁC ENUM DÙNG CHUNG CHO CÁC BÀI TẬP ----------
-
-    // Bài 3: các loại ngoại tệ hỗ trợ quy đổi
     enum CurrencyType { USD, EUR, JPY, GBP }
 
-    // Bài 10: trạng thái tồn kho của sản phẩm
     enum StockStatus { OutOfStock, LowStock, InStock, Discontinued }
 
-    // Bài 13: loại phương tiện gửi xe
     enum VehicleType { Motorbike, Car, Truck }
 
-    // Bài 15: loại khách hàng mua vé xem phim
     enum CustomerType { Child, Student, Adult, Senior }
 
     class Program
     {
         static void Main(string[] args)
         {
-            // Cho phép in tiếng Việt có dấu ra Console không bị lỗi font
             Console.OutputEncoding = Encoding.UTF8;
 
             bool dangChay = true;
@@ -51,7 +44,7 @@ namespace CSLT_hungdoan30.session3
                     case "14": Bai14_XuLyChuoiSoAnToan(); break;
                     case "15": Bai15_BanVeRapPhim(); break;
                     case "0": dangChay = false; break;
-                    default: Console.WriteLine("Lựa chọn không hợp lệ, vui lòng chọn lại!"); break;
+                    default: Console.WriteLine("Lựa chọn không hợp lệ, vui lòng chọn lại "); break;
                 }
 
                 if (dangChay)
@@ -62,15 +55,12 @@ namespace CSLT_hungdoan30.session3
                 }
             }
 
-            Console.WriteLine("Cảm ơn bạn đã sử dụng chương trình. Tạm biệt!");
+            Console.WriteLine("Cảm ơn bạn đã sử dụng chương trình.");
         }
 
         static void HienThiMenu()
         {
-            Console.WriteLine("==================================================");
-            Console.WriteLine("   BỘ BÀI TẬP C# - CHỦ ĐỀ KIỂU DỮ LIỆU (15 BÀI)");
-            Console.WriteLine("==================================================");
-            Console.WriteLine(" 1.  Tính tiền điện sinh hoạt bậc thang (EVN)");
+            Console.WriteLine(" 1.  Tính tiền điện gia đình sinh hoạt theo bậc thang (EVN)");
             Console.WriteLine(" 2.  Tính chỉ số BMI");
             Console.WriteLine(" 3.  Quy đổi tiền tệ ngoại tệ");
             Console.WriteLine(" 4.  Tính tuổi & đếm ngược sinh nhật");
@@ -86,83 +76,77 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine("14.  Xử lý chuỗi số an toàn & kiểm tra tràn số");
             Console.WriteLine("15.  Bán vé rạp chiếu phim & chiết khấu");
             Console.WriteLine(" 0.  Thoát chương trình");
-            Console.WriteLine("==================================================");
             Console.Write("Nhập lựa chọn của bạn: ");
         }
 
-        // =================================================================
+   
         // BÀI 1: TÍNH TIỀN ĐIỆN SINH HOẠT BẬC THANG (EVN)
-        // Kiến thức: decimal cho tiền tệ, ép kiểu, tính toán theo bậc thang
-        // =================================================================
+ 
         static void Bai01_TinhTienDien()
         {
-            Console.WriteLine("----- BÀI 1: TÍNH TIỀN ĐIỆN SINH HOẠT (EVN) -----");
+            Console.WriteLine("BÀI 1: TÍNH TIỀN ĐIỆN SINH HOẠT");
             Console.Write("Nhập chỉ số điện cũ (kWh): ");
-            double chiSoCu = double.Parse(Console.ReadLine());
+            double chisocu = double.Parse(Console.ReadLine());
             Console.Write("Nhập chỉ số điện mới (kWh): ");
-            double chiSoMoi = double.Parse(Console.ReadLine());
+            double chisomoi = double.Parse(Console.ReadLine());
 
-            if (chiSoMoi < chiSoCu)
+            if (chisomoi < chisocu)
             {
-                Console.WriteLine("Lỗi: Chỉ số mới phải lớn hơn hoặc bằng chỉ số cũ!");
+                Console.WriteLine("Chỉ số mới phải lớn hơn hoặc bằng chỉ số cũ");
                 return;
             }
 
-            // Số điện tiêu thụ dùng double vì đây là dữ liệu đo lường (kWh)
-            double soDienTieuThu = chiSoMoi - chiSoCu;
+            double sodienTieuThu = chisomoi - chisocu;
 
-            // Đơn giá từng bậc PHẢI dùng decimal vì liên quan đến tiền tệ
             decimal gia1 = 1806m, gia2 = 1866m, gia3 = 2167m, gia4 = 2729m, gia5 = 3050m;
 
             decimal tienDien = 0m;
-            double soConLai = soDienTieuThu;
+            double soConLai = sodienTieuThu;
 
-            // Bậc 1: 0 - 50 kWh đầu tiên
+            // Bậc 1
             double bac1 = Math.Min(soConLai, 50);
             tienDien += (decimal)bac1 * gia1;
             soConLai -= bac1;
 
-            // Bậc 2: 50 kWh tiếp theo (51 - 100)
+            // Bậc 2
             double bac2 = Math.Min(soConLai, 50);
             tienDien += (decimal)bac2 * gia2;
             soConLai -= bac2;
 
-            // Bậc 3: 100 kWh tiếp theo (101 - 200)
+            // Bậc 3
             double bac3 = Math.Min(soConLai, 100);
             tienDien += (decimal)bac3 * gia3;
             soConLai -= bac3;
 
-            // Bậc 4: 100 kWh tiếp theo (201 - 300)
+            // Bậc 4
             double bac4 = Math.Min(soConLai, 100);
             tienDien += (decimal)bac4 * gia4;
             soConLai -= bac4;
 
-            // Bậc 5: phần còn lại từ 301 kWh trở lên
+            // Bậc 5 (từ 301 kWh trở lên)
             double bac5 = soConLai;
             tienDien += (decimal)bac5 * gia5;
 
-            decimal thueVAT = tienDien * 0.08m; // 8% VAT
-            decimal tongTien = Math.Round(tienDien + thueVAT, 0); // làm tròn hàng đơn vị
+            decimal thueVAT = tienDien * 0.08m; 
+            decimal tongTien = Math.Round(tienDien + thueVAT, 0); 
 
-            Console.WriteLine($"\nSố điện tiêu thụ: {soDienTieuThu:N0} kWh");
+            Console.WriteLine($"\nSố điện tiêu thụ: {sodienTieuThu:N0} kWh");
             Console.WriteLine($"Tiền điện chưa thuế: {tienDien:N0} VNĐ");
             Console.WriteLine($"Thuế VAT (8%): {thueVAT:N0} VNĐ");
             Console.WriteLine($"Tổng thanh toán: {tongTien:N0} VNĐ");
         }
 
-        // =================================================================
+        
         // BÀI 2: TÍNH CHỈ SỐ BMI
-        // Kiến thức: double, Math.Pow, định dạng số thập phân {0:F2}
-        // =================================================================
+
         static void Bai02_TinhBMI()
         {
-            Console.WriteLine("----- BÀI 2: TÍNH CHỈ SỐ BMI -----");
-            Console.Write("Chiều cao (m, ví dụ 1.68): ");
+            Console.WriteLine("BÀI 2: TÍNH CHỈ SỐ BMI");
+            Console.Write("Chiều cao (m): ");
             double chieuCao = double.Parse(Console.ReadLine());
-            Console.Write("Cân nặng (kg, ví dụ 72.0): ");
+            Console.Write("Cân nặng (kg): ");
             double canNang = double.Parse(Console.ReadLine());
 
-            // Công thức BMI = cân nặng / (chiều cao)^2
             double bmi = canNang / Math.Pow(chieuCao, 2);
 
             string phanLoai;
@@ -179,13 +163,11 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Khuyên dùng: Cân nặng lý tưởng của bạn nên từ {canNangMin:F2} kg đến {canNangMax:F2} kg.");
         }
 
-        // =================================================================
         // BÀI 3: QUY ĐỔI TIỀN TỆ NGOẠI TỆ
-        // Kiến thức: decimal, enum, switch-case
-        // =================================================================
+
         static void Bai03_QuyDoiTienTe()
         {
-            Console.WriteLine("----- BÀI 3: QUY ĐỔI TIỀN TỆ -----");
+            Console.WriteLine("BÀI 3: QUY ĐỔI TIỀN TỆ ");
             Console.Write("Nhập số tiền VNĐ cần đổi: ");
             decimal soTienVND = decimal.Parse(Console.ReadLine());
 
