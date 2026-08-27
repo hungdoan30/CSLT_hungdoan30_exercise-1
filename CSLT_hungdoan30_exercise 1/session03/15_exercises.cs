@@ -167,7 +167,7 @@ namespace CSLT_hungdoan30.session3
 
         static void Bai03_QuyDoiTienTe()
         {
-            Console.WriteLine("BÀI 3: QUY ĐỔI TIỀN TỆ ");
+            Console.WriteLine("BÀI 3: QUY ĐỔI TIỀN TỆ NGOẠI TỆ");
             Console.Write("Nhập số tiền VNĐ cần đổi: ");
             decimal soTienVND = decimal.Parse(Console.ReadLine());
 
@@ -176,7 +176,7 @@ namespace CSLT_hungdoan30.session3
             int luaChon = int.Parse(Console.ReadLine());
 
             CurrencyType loaiTien;
-            decimal tyGia; // 1 đơn vị ngoại tệ = bao nhiêu VNĐ
+            decimal tyGia;
 
             switch (luaChon)
             {
@@ -189,7 +189,7 @@ namespace CSLT_hungdoan30.session3
                     return;
             }
 
-            decimal phiDichVu = soTienVND * 0.005m; // phí 0.5%
+            decimal phiDichVu = soTienVND * 0.005m; 
             decimal soTienSauPhi = soTienVND - phiDichVu;
             decimal soTienNgoaiTe = soTienSauPhi / tyGia;
 
@@ -198,17 +198,14 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Số tiền {loaiTien} nhận được: {soTienNgoaiTe:N2} {loaiTien}");
         }
 
-        // =================================================================
         // BÀI 4: TÍNH TUỔI CHÍNH XÁC & ĐẾM NGƯỢC SINH NHẬT
-        // Kiến thức: DateTime, TimeSpan, DateTime.TryParseExact
-        // =================================================================
+       
         static void Bai04_TinhTuoi()
         {
-            Console.WriteLine("----- BÀI 4: TÍNH TUỔI & ĐẾM NGƯỢC SINH NHẬT -----");
+            Console.WriteLine("BÀI 4: TÍNH TUỔI & ĐẾM NGƯỢC SINH NHẬT");
             Console.Write("Nhập ngày sinh (dd/MM/yyyy): ");
             string input = Console.ReadLine();
 
-            // TryParseExact trả về bool, không ném lỗi nếu sai định dạng -> an toàn hơn Parse thường
             bool hopLe = DateTime.TryParseExact(
                 input, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngaySinh);
 
@@ -221,13 +218,11 @@ namespace CSLT_hungdoan30.session3
             DateTime homNay = DateTime.Now.Date;
 
             int tuoi = homNay.Year - ngaySinh.Year;
-            // Nếu năm nay chưa tới ngày sinh nhật thì phải trừ đi 1 tuổi
+            
             if (homNay < ngaySinh.AddYears(tuoi)) tuoi--;
 
-            // Phép trừ 2 DateTime trả về 1 TimeSpan
             TimeSpan daSong = homNay - ngaySinh;
 
-            // Tìm sinh nhật gần nhất sắp tới (năm nay hoặc năm sau)
             DateTime sinhNhatNamNay = new DateTime(homNay.Year, ngaySinh.Month, ngaySinh.Day);
             DateTime sinhNhatTiepTheo = sinhNhatNamNay >= homNay ? sinhNhatNamNay : sinhNhatNamNay.AddYears(1);
             TimeSpan conLai = sinhNhatTiepTheo - homNay;
@@ -237,13 +232,12 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Sinh nhật tiếp theo còn: {conLai.TotalDays:N0} ngày nữa");
         }
 
-        // =================================================================
+       
         // BÀI 5: QUẢN LÝ ĐIỂM HỌC PHẦN & QUY ĐỔI GPA
-        // Kiến thức: double, điểm trung bình trọng số, cấu trúc rẽ nhánh
-        // =================================================================
+
         static void Bai05_TinhGPA()
         {
-            Console.WriteLine("----- BÀI 5: TÍNH ĐIỂM GPA -----");
+            Console.WriteLine("BÀI 5: TÍNH ĐIỂM GPA ");
             Console.Write("Điểm C# (thang 10): "); double diemCS = double.Parse(Console.ReadLine());
             Console.Write("Số tín chỉ C#: "); int tcCS = int.Parse(Console.ReadLine());
             Console.Write("Điểm Toán rời rạc (thang 10): "); double diemToan = double.Parse(Console.ReadLine());
@@ -302,13 +296,11 @@ namespace CSLT_hungdoan30.session3
             return string.Join(" ", tuList);
         }
 
-        // =================================================================
         // BÀI 6: CHUẨN HÓA HỌ TÊN & TẠO EMAIL/USERNAME
-        // Kiến thức: string, Trim, Split, Substring, ToLower/ToUpper, Join
-        // =================================================================
+    
         static void Bai06_ChuanHoaHoTen()
         {
-            Console.WriteLine("----- BÀI 6: CHUẨN HÓA HỌ TÊN & TẠO EMAIL -----");
+            Console.WriteLine("BÀI 6: CHUẨN HÓA HỌ TÊN & TẠO EMAIL");
             Console.Write("Nhập họ tên thô: ");
             string hoTenTho = Console.ReadLine();
 
@@ -336,13 +328,11 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Email cấp phát: {email}");
         }
 
-        // =================================================================
         // BÀI 7: CHI PHÍ NHIÊN LIỆU CHUYẾN ĐI (CAR-POOLING)
-        // Kiến thức: double, decimal, int, Math.Ceiling
-        // =================================================================
+     
         static void Bai07_ChiPhiXangDau()
         {
-            Console.WriteLine("----- BÀI 7: CHI PHÍ NHIÊN LIỆU CHUYẾN ĐI -----");
+            Console.WriteLine("BÀI 7: CHI PHÍ NHIÊN LIỆU CHUYẾN ĐI ");
             Console.Write("Quãng đường (km): "); double quangDuong = double.Parse(Console.ReadLine());
             Console.Write("Mức tiêu hao (Lít/100km): "); double tieuHao = double.Parse(Console.ReadLine());
             Console.Write("Giá xăng (VNĐ/Lít): "); decimal giaXang = decimal.Parse(Console.ReadLine());
@@ -361,13 +351,12 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Chi phí mỗi người: {chiPhiMoiNguoi:N0} VNĐ");
         }
 
-        // =================================================================
+     
         // BÀI 8: KIỂM TRA MÃ XÁC THỰC OTP
-        // Kiến thức: string, DateTime, TimeSpan, bool, so sánh chuỗi
-        // =================================================================
+    
         static void Bai08_KiemTraOTP()
         {
-            Console.WriteLine("----- BÀI 8: KIỂM TRA MÃ OTP -----");
+            Console.WriteLine("BÀI 8: KIỂM TRA MÃ OTP");
 
             // Mô phỏng mã OTP hệ thống đã gửi và thời điểm phát hành
             string maOTPHeThong = "839201";
@@ -438,13 +427,12 @@ namespace CSLT_hungdoan30.session3
             return thue;
         }
 
-        // =================================================================
+     
         // BÀI 9: MÁY TÍNH LƯƠNG GROSS - NET & THUẾ TNCN
-        // Kiến thức: decimal, double, bool, thuế lũy tiến từng phần
-        // =================================================================
+   
         static void Bai09_LuongGrossNet()
         {
-            Console.WriteLine("----- BÀI 9: TÍNH LƯƠNG GROSS - NET -----");
+            Console.WriteLine("BÀI 9: TÍNH LƯƠNG GROSS - NET");
             Console.Write("Lương Gross (VNĐ): "); decimal luongGross = decimal.Parse(Console.ReadLine());
             Console.Write("Số người phụ thuộc: "); int soNguoiPhuThuoc = int.Parse(Console.ReadLine());
 
@@ -468,13 +456,11 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"LƯƠNG NET THỰC NHẬN: {luongNet:N0} VNĐ");
         }
 
-        // =================================================================
         // BÀI 10: QUẢN LÝ TỒN KHO & XỬ LÝ NULLABLE TYPES
-        // Kiến thức: int?, DateTime?, toán tử ?? và ?.
-        // =================================================================
+    
         static void Bai10_QuanLyTonKho()
         {
-            Console.WriteLine("----- BÀI 10: QUẢN LÝ TỒN KHO (NULLABLE TYPES) -----");
+            Console.WriteLine("BÀI 10: QUẢN LÝ TỒN KHO (NULLABLE TYPES)");
 
             string maSanPham = "KB-09";
             string tenSanPham = "Bàn phím Cơ Akko";
@@ -503,13 +489,12 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Dự kiến nhập hàng: {ngayNhapHang}");
         }
 
-        // =================================================================
+       
         // BÀI 11: TÍNH LÃI SUẤT TIẾT KIỆM (LÃI ĐƠN & LÃI KÉP)
-        // Kiến thức: decimal, double, Math.Pow, ép kiểu qua lại
-        // =================================================================
+   
         static void Bai11_LaiSuatTietKiem()
         {
-            Console.WriteLine("----- BÀI 11: TÍNH LÃI SUẤT TIẾT KIỆM -----");
+            Console.WriteLine("BÀI 11: TÍNH LÃI SUẤT TIẾT KIỆM ");
             Console.Write("Số tiền gửi ban đầu (VNĐ): "); decimal P = decimal.Parse(Console.ReadLine());
             Console.Write("Lãi suất năm (%/năm, ví dụ 6.8): "); double r = double.Parse(Console.ReadLine());
             Console.Write("Kỳ hạn gửi (tháng): "); int n = int.Parse(Console.ReadLine());
@@ -548,13 +533,11 @@ namespace CSLT_hungdoan30.session3
             return sb.ToString();
         }
 
-        // =================================================================
         // BÀI 12: MÃ HÓA & GIẢI MÃ TIN NHẮN CAESAR CIPHER
-        // Kiến thức: char, string, ép kiểu int <-> char, phép chia lấy dư
-        // =================================================================
+    
         static void Bai12_CaesarCipher()
         {
-            Console.WriteLine("----- BÀI 12: MÃ HÓA CAESAR CIPHER -----");
+            Console.WriteLine("BÀI 12: MÃ HÓA CAESAR CIPHER ");
             Console.Write("Văn bản gốc: "); string vanBan = Console.ReadLine();
             Console.Write("Khóa dịch chuyển k (1-25): "); int k = int.Parse(Console.ReadLine());
 
@@ -566,13 +549,12 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"Văn bản Giải mã: {giaiMa}");
         }
 
-        // =================================================================
+        
         // BÀI 13: BÃI ĐỖ XE THÔNG MINH & TÍNH PHÍ GỬI XE
-        // Kiến thức: DateTime, TimeSpan, enum, Math.Ceiling, decimal
-        // =================================================================
+
         static void Bai13_BaiDoXe()
         {
-            Console.WriteLine("----- BÀI 13: TÍNH PHÍ GỬI XE -----");
+            Console.WriteLine(" BÀI 13: TÍNH PHÍ GỬI XE ");
             Console.WriteLine("Chọn loại xe: 1-Motorbike, 2-Car, 3-Truck");
             Console.Write("Lựa chọn: "); int chonXe = int.Parse(Console.ReadLine());
             VehicleType loaiXe = (VehicleType)(chonXe - 1);
@@ -613,13 +595,12 @@ namespace CSLT_hungdoan30.session3
             Console.WriteLine($"TỔNG PHÍ ĐỖ XE: {tongPhi:N0} VNĐ");
         }
 
-        // =================================================================
+        
         // BÀI 14: XỬ LÝ CHUỖI SỐ AN TOÀN & KIỂM TRA TRÀN SỐ
-        // Kiến thức: TryParse, byte/short/int/long, khối checked, OverflowException
-        // =================================================================
+
         static void Bai14_XuLyChuoiSoAnToan()
         {
-            Console.WriteLine("----- BÀI 14: XỬ LÝ CHUỖI SỐ AN TOÀN -----");
+            Console.WriteLine("BÀI 14: XỬ LÝ CHUỖI SỐ AN TOÀN");
             Console.Write("Nhập chuỗi số: "); string input = Console.ReadLine();
 
             // TryParse trả về bool và KHÔNG ném exception nếu sai định dạng -> an toàn hơn Parse
@@ -662,13 +643,12 @@ namespace CSLT_hungdoan30.session3
             }
         }
 
-        // =================================================================
+      
         // BÀI 15: BÁN VÉ RẠP CHIẾU PHIM & CHIẾT KHẤU TỰ ĐỘNG
-        // Kiến thức: enum, DayOfWeek, decimal, bool, cấu trúc logic điều kiện
-        // =================================================================
+
         static void Bai15_BanVeRapPhim()
         {
-            Console.WriteLine("----- BÀI 15: BÁN VÉ RẠP CHIẾU PHIM -----");
+            Console.WriteLine("BÀI 15: BÁN VÉ RẠP CHIẾU PHIM ");
             Console.WriteLine("Chọn loại khách hàng: 1-Child, 2-Student, 3-Adult, 4-Senior");
             Console.Write("Lựa chọn: "); int chonKH = int.Parse(Console.ReadLine());
             CustomerType loaiKhachHang = (CustomerType)(chonKH - 1);
