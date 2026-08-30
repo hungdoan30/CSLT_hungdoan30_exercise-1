@@ -11,7 +11,7 @@ namespace CSLT_hungdoan30_exercise_1.session04
             Console.OutputEncoding = Encoding.UTF8;
             Bai1_sochanle();
             Bai2_Timsolonnhat();
-            Bai3_KiemTraTamGiac();
+            Bai3_Kiemtratamgiac();
             Bai4_XacDinhGocToaDo();
         }
 
@@ -39,7 +39,6 @@ namespace CSLT_hungdoan30_exercise_1.session04
   
         static void Bai2_Timsolonnhat()
         {
-            Console.WriteLine("--- BÀI 2: TÌM SỐ LỚN NHẤT ---");
             Console.Write("Nhập số thứ nhất: ");
             double a = double.Parse(Console.ReadLine());
 
@@ -49,7 +48,6 @@ namespace CSLT_hungdoan30_exercise_1.session04
             Console.Write("Nhập số thứ ba: ");
             double c = double.Parse(Console.ReadLine());
 
-            // Thuật toán: Giả sử 'a' là lớn nhất, sau đó lần lượt so sánh với 'b' và 'c'
             double max = a;
 
             if (b > max) max = b;
@@ -58,12 +56,9 @@ namespace CSLT_hungdoan30_exercise_1.session04
             Console.WriteLine($"Số lớn nhất trong ba số là: {max}");
         }
 
-        // =================================================================
         // BÀI 3: KIỂM TRA LOẠI TAM GIÁC
-        // =================================================================
-        static void Bai3_KiemTraTamGiac()
+        static void Bai3_Kiemtratamgiac()
         {
-            Console.WriteLine("--- BÀI 3: PHÂN LOẠI TAM GIÁC ---");
             Console.Write("Nhập chiều dài cạnh a: ");
             double a = double.Parse(Console.ReadLine());
 
@@ -73,56 +68,47 @@ namespace CSLT_hungdoan30_exercise_1.session04
             Console.Write("Nhập chiều dài cạnh c: ");
             double c = double.Parse(Console.ReadLine());
 
-            // Bước 1: Kiểm tra xem 3 cạnh có tạo thành một tam giác hợp lệ không
-            // (Tổng 2 cạnh bất kỳ phải lớn hơn cạnh còn lại)
             if (a + b > c && a + c > b && b + c > a)
             {
-                // Bước 2: Dùng if - else if để phân loại
                 if (a == b && b == c)
-                    Console.WriteLine("Đây là tam giác Đều (Equilateral).");
+                    Console.WriteLine("Đây là tam giác đều.");
                 else if (a == b || a == c || b == c)
-                    Console.WriteLine("Đây là tam giác Cân (Isosceles).");
+                    Console.WriteLine("Đây là tam giác cân.");
                 else
-                    Console.WriteLine("Đây là tam giác Thường (Scalene).");
+                    Console.WriteLine("Đây là tam giác thường.");
             }
             else
             {
-                Console.WriteLine("Lỗi: Ba cạnh nhập vào không thể tạo thành một tam giác.");
+                Console.WriteLine("Lỗi, ba cạnh nhập vào không thể tạo thành một tam giác.");
             }
         }
 
-        // =================================================================
-        // BÀI 4: XÁC ĐỊNH GÓC PHẦN TƯ (QUADRANT) TRÊN HỆ TỌA ĐỘ XY
-        // =================================================================
+        // BÀI 4: XÁC ĐỊNH GÓC PHẦN TƯ TRÊN HỆ TỌA ĐỘ XY
         static void Bai4_XacDinhGocToaDo()
         {
-            Console.WriteLine("--- BÀI 4: XÁC ĐỊNH GÓC TỌA ĐỘ ---");
-            Console.Write("Input the value for X coordinate: ");
+            Console.Write("Nhập tọa độ x: ");
             double x = double.Parse(Console.ReadLine());
 
-            Console.Write("Input the value for Y coordinate: ");
+            Console.Write("Nhập tọa độ y: ");
             double y = double.Parse(Console.ReadLine());
 
-            // Áp dụng chính xác logic từ biểu đồ luồng (Flowchart) trong ảnh
             if (x > 0 && y > 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies in the First quadrant.");
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm ở góc phần tư thứ nhất.");
             else if (x < 0 && y > 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies in the Second quadrant.");
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm ở góc phần tư thứ hai.");
             else if (x < 0 && y < 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies in the Third quadrant.");
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm ở góc phần tư thứ ba.");
             else if (x > 0 && y < 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies in the Fourth quadrant.");
-
-            // Xử lý thêm các trường hợp đặc biệt (nằm trên trục hoặc tại gốc tọa độ)
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm ở góc phần tư thứ tư.");
             else if (x == 0 && y == 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies at the origin.");
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm tại gốc tọa độ.");
             else if (x == 0)
-                Console.WriteLine($"The coordinate point ({x},{y}) lies on the Y-axis.");
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm trên trục Y.");
             else
             {
-
+                Console.WriteLine($"Tọa độ ({x},{y}) nằm trên trục X.");
             }
-            Console.WriteLine($"The coordinate point ({x},{y}) lies on the X-axis.");
+            
         }
     }
 }
