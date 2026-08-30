@@ -15,7 +15,7 @@ namespace CSLT_hungdoan30.session3
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
